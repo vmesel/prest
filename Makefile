@@ -1,3 +1,5 @@
+DOCKER_COMPOSE?=docker-compose
+
 PHONY: \
 	build_test_image \
 
