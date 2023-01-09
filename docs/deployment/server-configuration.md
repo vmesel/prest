@@ -83,6 +83,12 @@ mode = "disable"
 sslcert = "./PATH"
 sslkey = "./PATH"
 sslrootcert = "./PATH"
+
+[expose]
+enabled = true
+databases = true
+schemas = true
+tables = true
 ```
 
 ## Authorization
@@ -145,6 +151,48 @@ password = "password"
 
 > to validate all endpoints with generated jwt token must be activated jwt option
 
+## Expose Data
+
+The expose data setting enables you to configure if you want users to be able to reach listing endpoints, such as:
+
+ - /databases
+ - /schemas
+ - /tables
+
+
+An example of a configuration file disabling all listings:
+
+```toml
+# previous toml content
+[expose]
+    enabled = true
+```
+
+If you want to disable just the database listing:
+
+```toml
+# previous toml content
+[expose]
+    databases = true
+```
+
+| Name | Description |
+| --- | --- |
+| enabled | Set this as `true` if you want to **disable** all listing endpoints available. |
+| databases | Set this as `false` if you want to **disable** *databases* listing endpoints only. |
+| schemas | Set this as `false` if you want to **disable** *schemas* listing endpoints only. |
+| tables | Set this as `false` if you want to **disable** *tables* listing endpoints only. |
+
+### Default values for Exposure Settings
+
+| Name | Default Value |
+| --- | --- |
+| enabled | `false` |
+| databases | `true` |
+| schemas | `true` |
+| tables | `true` |
+
+
 ## SSL
 
 There is 4 options to set on ssl mode:
@@ -182,4 +230,4 @@ Read the specific topic where we talk about CROS [here](/prestd/deployment/cors-
 
 If you need to setup a health check on your deployment (ECS/EKS or others), you can use `/_health` as a provider of this information.
 
-The server will return 503 whenever a Postgres connection is not reachable.  
+The server will return 503 whenever a pREST is not working properly.  
