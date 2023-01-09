@@ -2,7 +2,7 @@ PHONY: \
 	build_test_image \
 
 build_test_image:
-	docker-compose -f docker-compose.yml  run --rm postgres -d
+	$(DOCKER_COMPOSE) -f docker-compose.yml  run --rm postgres -d
 
 test:
 	go generate ./...
