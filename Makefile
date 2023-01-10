@@ -8,8 +8,4 @@ build_test_image:
 
 test:
 	go generate ./...
-	docker-compose -f testdata/docker-compose.yml up --abort-on-container-exit --remove-orphans
-
-test_fileoutput:
-	go generate ./...
-	docker-compose -f testdata/docker-compose.yml up --abort-on-container-exit --remove-orphans > testing.txt
+	$(DOCKER_COMPOSE) -f testdata/docker-compose.yml up --abort-on-container-exit --remove-orphans
