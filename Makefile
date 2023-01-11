@@ -7,5 +7,4 @@ build_test_image:
 	$(DOCKER_COMPOSE) -f docker-compose.yml  run --rm postgres -d
 
 test:
-	go generate ./...
 	$(DOCKER_COMPOSE) -f testdata/docker-compose.yml up --abort-on-container-exit --remove-orphans
